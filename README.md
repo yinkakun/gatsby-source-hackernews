@@ -1,22 +1,22 @@
-## gatsby-source-hackernews
+## gatsby-source-hnapi
 
 Source plugin for pulling data into Gatsby from [node-hnapi](https://github.com/cheeaun), an unofficial API for Hacker News.
 
 ## Install
 
 ```sh
-npm install gatsby-source-hackernews
+npm install gatsby-source-hnapi
 
 #or
 
-yarn add gatsby-source-hackernews
+yarn add gatsby-source-hnapi
 ```
 
 ## How to use
 
 ```js
 // In your gatsby-config.js
-plugins: [`gatsby-source-hackernews`];
+plugins: [`gatsby-source-hnapi`];
 ```
 
 ## How To Query

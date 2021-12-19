@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-source-hackernews",
+  "name": "gatsby-source-hnapi",
   "version": "0.1.0",
   "description": "A gatsby plugin to pull data from node-hnapi, an unofficial API for Hacker News. ",
   "main": "index.js",
@@ -10,7 +10,7 @@
   "keywords": [
     "gatsby",
     "gatsby-plugin",
-    "gatsby-source-hackernews"
+    "gatsby-source-hnapi"
   ],
   "author": "Yinka Adeidre <yinakun@gmail.com>",
   "license": "MIT",
