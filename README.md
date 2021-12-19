@@ -35,6 +35,7 @@ query MyQuery {
       time_ago
       time
       domain
+      comments
     }
   }
 }

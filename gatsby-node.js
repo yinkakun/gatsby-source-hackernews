@@ -14,6 +14,33 @@ const fetchStories = async (storyType) => {
   }
 };
 
+const fetchStory = async (storyId) => {
+  try {
+    const response = await axiosInstance.get(`/item/${storyId}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const fetchStoriesWithComments = async (storyType) => {
+  try {
+    const stories = await fetchStories(storyType);
+    const storiesWithComment = await Promise.all(
+      stories.map(async (story) => {
+        const storyWithComents = await fetchStory(story.id);
+        return {
+          ...story,
+          comments: JSON.stringify(storyWithComents.comments),
+        };
+      }),
+    );
+    return storiesWithComment;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const TOP_STORIES_NODE_TYPE = 'HNTopStories';
 const LATEST_NODE_TYPE = 'HNLatestStories';
 const BEST_NODE_TYPE = 'HNBestStories';
@@ -24,12 +51,12 @@ const JOBS_NODE_TYPE = 'HNJobs';
 exports.sourceNodes = async ({ actions, createContentDigest }) => {
   const { createNode } = actions;
 
-  const topStories = await fetchStories('news');
-  const latest = await fetchStories('newest');
-  const best = await fetchStories('best');
-  const show = await fetchStories('show');
-  const jobs = await fetchStories('jobs');
-  const ask = await fetchStories('ask');
+  const topStories = await fetchStoriesWithComments('news');
+  const latest = await fetchStoriesWithComments('newest');
+  const best = await fetchStoriesWithComments('best');
+  const show = await fetchStoriesWithComments('show');
+  const jobs = await fetchStoriesWithComments('jobs');
+  const ask = await fetchStoriesWithComments('ask');
 
   topStories.forEach((story) => {
     createNode({
