@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-hnapi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A gatsby plugin to pull data from node-hnapi, an unofficial API for Hacker News. ",
   "main": "index.js",
   "scripts": {
